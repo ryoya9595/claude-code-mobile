@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>外出先でClaude Code</title>
+<meta name="description" content="スマホのClaudeアプリから、外出先でClaude Codeを使う方法。家のパソコンを操作する方法と、スマホだけで動かす方法の2通りを、Claude Code自身が案内してくれる導入マニュアル。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  .ai-box{border:2px dashed var(--accent);background:#fff;border-radius:16px;padding:20px 24px;margin-top:18px;font-size:.88rem;color:var(--ink-soft)}
+  .ai-box b{color:var(--ink)}
+  .ai-box code{background:var(--paper-2);padding:2px 8px;border-radius:6px;font-size:.8rem;word-break:break-all}
+  .card code{background:var(--paper-2);padding:2px 8px;border-radius:6px;font-size:.82rem}
+  .card .inline-cmd code{background:transparent;padding:0;font-size:inherit}
+  .route-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:22px}
+  .route{background:#fff;border:2px solid var(--line);border-radius:var(--radius);padding:24px;position:relative;overflow:hidden}
+  .route .r-stripe{position:absolute;top:0;left:0;right:0;height:6px;background:var(--accent)}
+  .route.b .r-stripe{background:var(--coral)}
+  .route .r-label{font-size:.75rem;font-weight:700;letter-spacing:.1em;color:var(--accent-deep)}
+  .route.b .r-label{color:var(--coral)}
+  .route h3{font-size:1.15rem;font-weight:900;margin:6px 0 10px}
+  .route p{font-size:.9rem;color:var(--ink-soft)}
+  .route ul{margin-top:10px;padding-left:1.2em;font-size:.88rem;color:var(--ink-soft)}
+  .route li{margin:5px 0}
+  .route .rec{display:inline-block;margin-left:6px;font-size:.7rem;background:var(--accent);color:#fff;border-radius:999px;padding:2px 10px;vertical-align:middle}
+  .cmp{width:100%;border-collapse:collapse;font-size:.88rem}
+  .cmp th,.cmp td{border-bottom:1px solid var(--line);padding:10px 8px;text-align:left;vertical-align:top}
+  .cmp th{color:var(--ink);font-weight:700;white-space:nowrap}
+  .cmp td{color:var(--ink-soft)}
+  .scroll-x{overflow-x:auto}
+  .start-card{border:2px solid var(--accent)}
+  @media(max-width:640px){.route-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-in">
+    <a class="logo" href="./">📱 外出先で <span class="brain">Claude Code</span></a>
+    <nav class="topnav">
+      <a href="#start">はじめ方</a>
+      <a href="#what">2つの方法</a>
+      <a href="#ready">準備</a>
+      <a href="#install">導入</a>
+      <a href="#use">使い方</a>
+      <a href="#trouble">困ったとき</a>
+    </nav>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="hero-badge accent">Claude Code 外出先セットアップ</div>
+  <h1>外にいても、<br><span class="hl">スマホから Claude Code。</span></h1>
+  <p class="lead">スマホの Claude アプリから、Claude Code に作業をお願いできるようにします。やり方は2通り。このページの<strong>URLをパソコンの Claude Code に貼るだけ</strong>で、Claude Code が1つずつ案内してくれます。</p>
+  <div class="meta">
+    <span class="chip accent">所要時間 5分〜20分</span>
+    <span class="chip">🍎 Mac / 🪟 Windows</span>
+    <span class="chip">📱 iPhone / Android</span>
+    <span class="chip">Pro・Max プラン</span>
+  </div>
+</header>
+
+<main>
+
+<!-- はじめ方（URLを貼るだけ） -->
+<section id="start" style="padding-top:8px">
+  <div class="card start-card">
+    <h3>🚀 はじめ方 — URLを貼るだけ</h3>
+    <ol>
+      <li>下の「コピー」を押して、このページのURLをコピー</li>
+      <li><strong>パソコンの Claude Code</strong> に貼り付けて送信（いつも使っている作業フォルダで開いた Claude Code でOK）</li>
+      <li>あとは Claude Code の質問に答えていくだけ</li>
+    </ol>
+    <div class="inline-cmd" style="margin-top:12px"><code id="pageUrl"></code><button class="copy-btn" data-target="pageUrl">コピー</button></div>
+  </div>
+
+  <div class="ai-box">
+    🤖 <b>Claude Code へ（このページのURLを貼られたとき）：</b>ユーザーがこのページのURLを送ってきたら、「外出先（スマホ）から Claude Code を使えるようにする」セットアップの案内を希望しています。ユーザーに「外出先で Claude Code を使えるようにする案内を始めますね」と一言伝えてから、手順書の原文 <code>https://ryoya9595.github.io/claude-code-mobile/setup.md</code> を curl（Windows は <code>curl.exe</code>）で取得して全文を読み（要約ツールではなく原文を読む。作業フォルダには保存しない）、その手順どおりに1〜3手順ずつ、やさしい日本語で案内してください。インストールやファイル作成の前には、手順書のとおりユーザーの了承を取ってください。
+  </div>
+</section>
+
+<!-- 01 2つの方法 -->
+<section id="what">
+  <div class="sec-head"><div class="step-num">01</div><h2>方法は2つ — どちらも Claude アプリの「Code」から</h2></div>
+
+  <div class="route-grid">
+    <div class="route">
+      <div class="r-stripe"></div>
+      <div class="r-label">方法 A</div>
+      <h3>家のパソコンをスマホで操作<span class="rec">おすすめ</span></h3>
+      <p>パソコンをつけたまま出かけて、スマホからいつもの Claude Code を動かします。</p>
+      <ul>
+        <li>いつものフォルダ・設定・AI秘書が<strong>そのまま</strong>使える</li>
+        <li>準備はほぼ不要（コマンド1つ）</li>
+        <li>⚠️ パソコンは<strong>つけっぱなし・スリープさせない</strong></li>
+      </ul>
+    </div>
+    <div class="route b">
+      <div class="r-stripe"></div>
+      <div class="r-label">方法 B</div>
+      <h3>スマホだけで動かす</h3>
+      <p>ネット上のパソコン（クラウド）で Claude Code が動きます。</p>
+      <ul>
+        <li>パソコンの電源は<strong>切ってOK</strong></li>
+        <li>GitHub（ファイルを置いておくネット上の場所）の準備が必要。<strong>Claude Code が一緒にやってくれます</strong></li>
+        <li>⚠️ 使えるのは GitHub に置いたファイルだけ</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>🤔 どっちにする？</h3>
+    <div class="scroll-x">
+    <table class="cmp">
+      <tr><th></th><th>A：パソコンを操作</th><th>B：スマホだけ</th></tr>
+      <tr><th>パソコンの電源</th><td>つけっぱなし</td><td>切ってOK</td></tr>
+      <tr><th>使えるファイル</th><td>パソコンの中のもの全部</td><td>GitHub に置いたものだけ</td></tr>
+      <tr><th>準備</th><td>ほぼなし</td><td>GitHub の登録＋接続（15〜20分）</td></tr>
+      <tr><th>こんな人に</th><td>いつもの環境をそのまま外で使いたい</td><td>パソコンを閉じて出かけたい</td></tr>
+    </table>
+    </div>
+    <p style="margin-top:14px">迷ったら<strong>まず A</strong>。「両方」を選べば、A → B の順に案内してくれます。</p>
+  </div>
+</section>
+
+<!-- 02 準備 -->
+<section id="ready">
+  <div class="sec-head"><div class="step-num">02</div><h2>準備 — この3つだけ確認</h2></div>
+  <div class="card">
+    <ol>
+      <li><strong>Claude の有料プラン（Pro か Max）</strong>に入っている（無料プランではスマホから Claude Code は使えません）</li>
+      <li>スマホに <strong>Claude アプリ</strong>（App Store／Google Play で「Claude」、提供元 Anthropic）が入っている</li>
+      <li>スマホとパソコンで<strong>同じアカウント（同じメールアドレス）</strong>でログインしている</li>
+    </ol>
+    <div class="note warn"><span class="ico">⚠️</span><span><strong>うまくいかない原因でいちばん多いのが 3 です。</strong>スマホのアプリで「設定」から、ログインしているメールアドレスを一度確認してみてください。</span></div>
+  </div>
+</section>
+
+<!-- 03 導入 -->
+<section id="install">
+  <div class="sec-head"><div class="step-num">03</div><h2>導入 — URLを貼ったあとの流れ</h2></div>
+  <div class="card">
+    <h3>進む流れ</h3>
+    <div class="flow">
+      <div class="flow-item">
+        <div class="flow-dot">1</div>
+        <div class="flow-body"><b>確認</b><span>プラン・スマホアプリ・ログインの状態を、Claude Code が確認します</span></div>
+      </div>
+      <div class="flow-item"><div class="flow-line"></div></div>
+      <div class="flow-item">
+        <div class="flow-dot">2</div>
+        <div class="flow-body"><b>A か B かを選ぶ</b><span>迷ったら A。「両方」もOK</span></div>
+      </div>
+      <div class="flow-item"><div class="flow-line"></div></div>
+      <div class="flow-item">
+        <div class="flow-dot">A</div>
+        <div class="flow-body"><b>スリープ設定 → <code>/remote-control</code> → スマホでつなぐ</b><span>コマンドはあなたが入力します（Claude Code が案内します）</span></div>
+      </div>
+      <div class="flow-item"><div class="flow-line"></div></div>
+      <div class="flow-item">
+        <div class="flow-dot">B</div>
+        <div class="flow-body"><b>GitHub 登録 → 作業場所づくり → Claude とつなぐ</b><span>登録と「承認」ボタンはあなたが。道具のインストールと、スマホ用の作業場所「claude-mobile」（非公開）づくりは Claude Code がやります</span></div>
+      </div>
+      <div class="flow-item"><div class="flow-line"></div></div>
+      <div class="flow-item">
+        <div class="flow-dot">✓</div>
+        <div class="flow-body"><b>スマホで試す</b><span>スマホから送ったメッセージに返事が来たら完成です</span></div>
+      </div>
+    </div>
+    <div class="note ok"><span class="ico">✅</span><span>インストールやファイル作成の前には、必ず Claude Code が「いいですか？」と聞きます。パスワードの入力や GitHub の登録は、Claude Code は代わりにやりません（あなたがブラウザでやります）。</span></div>
+  </div>
+
+  <details>
+    <summary>🔁 URLを貼っても始まらないとき</summary>
+    <div class="d-body">
+      <p>Claude Code がページを読めなかったときは、下のメッセージを「コピー」して、代わりに貼ってください。</p>
+      <div class="prompt-box" style="margin-top:12px">
+        <div class="prompt-head">
+          <div class="dots"><i></i><i></i><i></i></div>
+          <span class="fname">導入メッセージ（予備）</span>
+          <button class="copy-btn" data-target="installPrompt">コピー</button>
+        </div>
+        <div class="prompt-scroll"><pre id="installPrompt"></pre></div>
+      </div>
+    </div>
+  </details>
+
+  <details>
+    <summary>📄 Claude Code が読む手順書（中身を見たい人向け）</summary>
+    <div class="d-body">
+      <p>Claude Code は <a href="setup.md">setup.md</a> を読んで案内します。中身はただの手順書（文章）です。内容は Claude Code の公式ドキュメントにもとづいています。</p>
+    </div>
+  </details>
+
+</section>
+
+<!-- 04 使い方 -->
+<section id="use">
+  <div class="sec-head"><div class="step-num">04</div><h2>ふだんの使い方</h2></div>
+  <div class="card">
+    <h3>A：家のパソコンを操作する</h3>
+    <ol>
+      <li>出かける前：パソコンは<strong>つけたまま・ふたを開けたまま・Claude Code を開いたまま</strong></li>
+      <li>外で：スマホの Claude アプリ →<strong>「Code」</strong>→ <strong>パソコンのマーク＋緑の点</strong>がついたセッションを開く</li>
+      <li>あとはいつもどおり話しかけるだけ。「ファイルを変更していい？」の確認もスマホで OK できます</li>
+    </ol>
+  </div>
+  <div class="card">
+    <h3>B：スマホだけで動かす</h3>
+    <ol>
+      <li>スマホの Claude アプリ →<strong>「Code」</strong>→ 新しく始める</li>
+      <li>入力欄の下のリポジトリ選択で <code>claude-mobile</code> を選んで、お願いを送る</li>
+      <li>スマホを閉じても、クラウドで作業は続きます。あとでアプリを開けば結果が見られます</li>
+      <li>パソコンに戻ったら、<code>claude-mobile</code> フォルダを開いた Claude Code にこう送ると、スマホでの作業が取り込まれます
+        <div class="inline-cmd"><code id="pullPrompt"></code><button class="copy-btn" data-target="pullPrompt">コピー</button></div>
+      </li>
+    </ol>
+    <div class="note warn"><span class="ico">⚠️</span><span><code>claude-mobile</code> は非公開ですが、ネット上の場所です。<strong>パスワード・APIキー・お客さんの個人情報は置かないでください。</strong></span></div>
+  </div>
+</section>
+
+<!-- 05 困ったとき -->
+<section id="trouble">
+  <div class="sec-head"><div class="step-num">05</div><h2>困ったとき</h2></div>
+  <p style="color:var(--ink-soft);font-size:.92rem;margin-bottom:8px">基本は、エラーの文章やスクショをそのまま Claude Code に貼れば、原因を調べて直してくれます。よくあるものだけ載せています。</p>
+
+  <details>
+    <summary>スマホの「Code」に、パソコンのセッションが出てこない</summary>
+    <div class="d-body">
+      <p>いちばん多いのは、<b>スマホとパソコンで別のアカウント</b>にログインしているケースです。スマホのアプリを一度ログアウトして、パソコンと同じメールアドレスでログインし直してください。それでも出ないときは、パソコンで <code>/remote-control</code> をもう一度入力してみてください。</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>最初はつながったのに、外に出たら動かなくなった</summary>
+    <div class="d-body">
+      <p>パソコンが<b>スリープ</b>したか、Claude Code のアプリ（ターミナル）を閉じた可能性が高いです。電源アダプタにつなぐ・ふたを閉じない・スリープしない設定にする、の3つを確認してください。パソコンが起きれば自動でつながり直します。</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>スマホに「Code」が見当たらない</summary>
+    <div class="d-body">
+      <p>無料プランだと表示されません。有料プランなのに無いときは、アプリを最新版にアップデートしてみてください。</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>「Remote Control requires a claude.ai subscription」と出た</summary>
+    <div class="d-body">
+      <p>Claude のアカウントではなく APIキーで動いている、またはログインが切れている状態です。このメッセージを Claude Code に貼って「直して」と送れば、ログインし直す手順を案内してくれます。</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>スマホで claude-mobile が選べない（方法B）</summary>
+    <div class="d-body">
+      <p>Claude に claude-mobile を見る許可が出ていません。パソコンのブラウザで <a href="https://github.com/apps/claude/installations/new" target="_blank" rel="noopener">github.com/apps/claude/installations/new</a> を開き、claude-mobile を選んで保存してください。</p>
+    </div>
+  </details>
+
+  <details>
+    <summary>前に AI秘書・記憶フォルダを作った（それも外で使いたい）</summary>
+    <div class="d-body">
+      <p><b>方法A</b>なら、そのまま使えます。記憶フォルダを開いた Claude Code で <code>/remote-control</code> を入力すれば、スマホからいつもの秘書に話しかけられます。記憶フォルダを GitHub に上げる必要はありません。</p>
+    </div>
+  </details>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer-in">
+    <span>📱 外出先で Claude Code を使う方法</span>
+    <span>制作：関 諒也</span>
+  </div>
+</footer>
+
+<div id="toast"></div>
+<script src="script.js"></script>
+</body>
+</html>
