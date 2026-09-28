@@ -45,9 +45,9 @@
 
 1. **OS**（Mac / Windows）
 2. **Claude Code をどこから使っているか**：デスクトップアプリ（Claude アプリの「Code」）／ターミナル／VS Code など
-   - 環境変数 `CLAUDE_CODE_ENTRYPOINT` があれば参考にする。分からなければ、1-2 でユーザーに聞く
+   - 環境変数 `CLAUDE_CODE_ENTRYPOINT` が `claude-desktop` ならデスクトップアプリ。それ以外の値・空のときは、1-2 でユーザーに聞く
 3. **Claude Code のバージョン**：`claude --version`（コマンドが無くてもデスクトップアプリなら問題ない。控えておくだけ）
-4. **APIキーで動いていないか**：環境変数 `ANTHROPIC_API_KEY`・`ANTHROPIC_AUTH_TOKEN`・`CLAUDE_CODE_OAUTH_TOKEN` が **設定されているかどうかだけ** 確認する（中身は表示しない）。`~/.claude/settings.json` に `apiKeyHelper` や `env` の中の上記キーがあるかも確認する（値は表示しない）
+4. **APIキーで動いていないか**：環境変数 `ANTHROPIC_API_KEY`・`ANTHROPIC_AUTH_TOKEN`・`CLAUDE_CODE_OAUTH_TOKEN` が **設定されているかどうかだけ** 確認する（中身は表示しない）。`~/.claude/settings.json` と、作業フォルダの `.claude/settings.json`・`.claude/settings.local.json` に、`apiKeyHelper` や上記のキー名が書かれていないかも確認する。確認は `grep -q` などで「あるかないか」だけを見て、ファイルの中身や値は表示しない（例：`grep -q -E 'apiKeyHelper|ANTHROPIC_API_KEY|ANTHROPIC_AUTH_TOKEN|CLAUDE_CODE_OAUTH_TOKEN' ~/.claude/settings.json && echo あり || echo なし`）
    - どれかが設定されている → ルートAが使えない（Remote Control は claude.ai のアカウントでのログインが必須で、APIキーは使えない）。付録「うまくいかないとき」の該当項目で対処する
 5. **今の作業フォルダ**：ホームフォルダそのもの（`~`／`C:\Users\<名前>`）で開いていたら、ルートAの前に「いつも使っているフォルダ（例：書類の中の作業フォルダ）を開き直してから、もう一度同じメッセージを貼ってください」と案内する（公式ドキュメントどおり、Remote Control はプロジェクトのフォルダから始める必要があるため）。ルートBだけなら、そのまま進めてよい
 6. **今日の日付**（システムの日付を使う）
@@ -310,7 +310,7 @@ Remote Control は **パソコンの Claude Code が動き続けている間だ�
   - スマホとパソコンは **同じ Claude アカウント** でログインする
   - A はパソコンがスリープ・アプリを閉じると使えない
   - B で使えるのは `claude-mobile` に置いたファイルだけ。パスワードやお客さんの個人情報は置かない
-- 今日の日付で「外出先から使えるようにした（ルート：A／B）」を、作業フォルダに記憶のしくみ（`daily/` など）があればそこに記録する（無ければ何もしない）
+- 作業フォルダに記憶のしくみ（`daily/` など）があるときだけ、「今日の日付で『外出先から使えるようにした』と記録していいですか？」と聞き、OKなら記録する（無ければ何もしない）
 
 ---
 
