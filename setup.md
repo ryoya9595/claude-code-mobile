@@ -268,14 +268,15 @@ Remote Control は **パソコンの Claude Code が動き続けている間だ�
 
 ### B-5. Claude と GitHub をつなぐ（ユーザーがブラウザでやる）
 
-1. ユーザーに聞いてから、パソコンのブラウザで https://claude.ai/code を開く（Mac：`open https://claude.ai/code`／Windows：`start https://claude.ai/code`）
-2. ユーザーに案内する：
-   1. Claude のアカウントでログインしていなければログイン（パソコン・スマホと **同じアカウント**）
-   2. 「GitHub と接続」（英語なら **Connect GitHub**／**Sign in with GitHub**）の案内が出たら押す → GitHub の画面で緑の「Authorize」（承認）を押す
-   3. 続けて「**Claude GitHub App をインストール**」の案内が出たら進む（出なければ、https://github.com/apps/claude/installations/new を開いてもらう）
-   4. インストールの画面で **「Only select repositories」（選んだリポジトリだけ）** を選び、`claude-mobile` だけを選んで「Install」を押す
+> ⚠️ `https://claude.ai/code` は案内しない・開かない。パソコンに Claude のアプリが入っていると、ブラウザではなくアプリの中で開いて **真っ白な画面** になり、先に進めない。必ず下の GitHub のページを直接開く。
+
+1. ユーザーに聞いてから、**GitHub のインストール画面をブラウザで直接開く**（Mac：`open "https://github.com/apps/claude/installations/new"`／Windows：`start "" "https://github.com/apps/claude/installations/new"`）
+2. ユーザーに案内する（画面は GitHub）：
+   1. GitHub にログインしていなければログイン（メールアドレスとパスワードはユーザーが自分で入れる）
+   2. 「Install & Authorize Claude」の画面で **「Only select repositories」（選んだリポジトリだけ）** を選び、「Select repositories」で `claude-mobile` だけを選ぶ
       - 「All repositories」（全部）は選ばない。スマホ用の作業場所だけを Claude に見せる
-   5. 「環境（environment）」を作る画面が出たら、何も変えずに進める（Pro／Max プランなら自動で「Default」が作られる）
+   3. 緑の **「Install & Authorize」** を押す（すでにインストール済みで「Configure」の画面になった場合は、`claude-mobile` を追加して「Save」）
+   4. Claude の画面に戻って「インストールされました」と出たらOK。Claude のログインを求められたら、パソコン・スマホと **同じアカウント** でログイン
 3. 「できた」を待つ
 
 ※ ターミナル版の Claude Code を使っている人は、代わりに `/web-setup` と入力する方法もある（gh のログインを使って一気につなぐ）。ただしその場合、Claude は gh で見られる **全部のリポジトリ** に触れられるようになるので、初心者には上のブラウザの方法（claude-mobile だけ許可）をすすめる。
